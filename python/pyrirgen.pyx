@@ -1,5 +1,15 @@
-cimport cdefs
+# distutils: language = c++
+# distutils: extra_compile_args = -std=c++11
+# distutils: extra_link_args = -std=c++11
+# encoding: utf-8
+
+#cimport cdefs
 import collections
+
+from libcpp.vector cimport vector
+
+cdef extern from "rirgen.h":
+	cdef vector[vector[double]] gen_rir(double c, double fs, vector[vector[double]] rr, vector[double] ss, vector[double] LL, vector[double] beta_input, vector[double] orientation, int isHighPassFilter, int nDimension, int nOrder, int nSamples, char microphone_type);
 
 def generateRir(roomMeasures, sourcePosition, receiverPositions, *, reverbTime=None, betaCoeffs=None, float soundVelocity=340, float fs=16000, orientation=[.0, .0], bint isHighPassFilter=True, int nDim=3, int nOrder=-1, int nSamples=-1, micType='o'):
 	""" Computes the response of an acoustic source to one or more microphones in a reverberant room using the image method [1,2].
@@ -54,7 +64,7 @@ def generateRir(roomMeasures, sourcePosition, receiverPositions, *, reverbTime=N
 		multipleMics = False
 		receiverPositions = [receiverPositions]
 
-	h = cdefs.gen_rir(soundVelocity, fs, receiverPositions, sourcePosition, roomMeasures, betaCoeffs, orientation, isHighPassFilter, nDim, nOrder, nSamples, ord(micType[0]))
+	h = gen_rir(soundVelocity, fs, receiverPositions, sourcePosition, roomMeasures, betaCoeffs, orientation, isHighPassFilter, nDim, nOrder, nSamples, ord(micType[0]))
 
 	if multipleMics:
 		return h
