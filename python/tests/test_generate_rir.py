@@ -1,5 +1,5 @@
 import math
-import pyrirgen
+import rirgen
 
 
 def test_1():
@@ -11,7 +11,7 @@ def test_1():
     rt = 0.4  # Reverberation time (s)
     n = 2048  # Number of samples
 
-    h = pyrirgen.generate_rir(
+    h = rirgen.generate_rir(
         L, s, r,
         sound_velocity=c,
         fs=fs,
@@ -37,7 +37,7 @@ def test_2():
     orientation = 0  # Microphone orientation (rad)
     hp_filter = True  # Enable high-pass filter
 
-    h = pyrirgen.generate_rir(
+    h = rirgen.generate_rir(
         L, s, r,
         sound_velocity=c,
         fs=fs,
@@ -67,7 +67,7 @@ def test_3():
     orientation = 0  # Microphone orientation (rad)
     hp_filter = True  # Enable high-pass filter
 
-    h = pyrirgen.generate_rir(
+    h = rirgen.generate_rir(
         L, s, r,
         sound_velocity=c,
         fs=fs,
@@ -99,7 +99,7 @@ def test_4():
     orientation = [math.pi / 2, 0]  # Microphone orientation (rad)
     hp_filter = False  # Enable high-pass filter
 
-    h = pyrirgen.generate_rir(
+    h = rirgen.generate_rir(
         L, s, r,
         sound_velocity=c,
         fs=fs,
