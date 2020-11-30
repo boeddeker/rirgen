@@ -17,6 +17,19 @@ More information can be found [here](https://www.audiolabs-erlangen.de/fau/profe
    - Remove shared library and rewrite code, that it only uses cython
    - Let setup.py do everything (i.e. drop makefile call), i.e. support pip 
    - Convert examples to tests
- 
+
+# Install
+You can use pip to install it from github
+```
+pip install git+https://github.com/boeddeker/rirgen
+```
+or clone it and use pip to install from a local folder
+```
+git clone https://github.com/boeddeker/rirgen
+cd rirgen
+pip install .
+```
+
+# References
 
 1. J.B. Allen and D.A. Berkley, "Image method for efficiently simulating small-room acoustics," Journal Acoustic Society of America, 65(4), April 1979, p 943.
