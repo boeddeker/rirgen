@@ -90,7 +90,7 @@ def generate_rir(
     if beta_coeffs is None:
         beta_coeffs = [reverb_time]
 
-    if all(isinstance(e, collections.Iterable) for e in receiver_positions):
+    if all(isinstance(e, collections.abc.Iterable) for e in receiver_positions):
         multiple_mics = True
     else:
         multiple_mics = False
